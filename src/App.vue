@@ -1,10 +1,17 @@
 <template>
   <v-app>
-    <v-toolbar app dark color="primary">
+    <v-toolbar app dark color="red darken-4">
       <v-toolbar-side-icon></v-toolbar-side-icon>
-  
-      <v-toolbar-title class="white--text">DoughSavers</v-toolbar-title>
-  
+     
+       <v-flex xs12>
+        <v-img
+          :src="require('./assets/trademark.png')"
+          class="my-3"
+          contain
+          max-height="70"
+        ></v-img>
+      </v-flex>
+
       <v-spacer></v-spacer>
 
       <v-btn icon>

@@ -6,10 +6,10 @@
     >
       <v-flex xs12>
         <v-img
-          :src="require('../assets/logo.svg')"
+          :src="require('../assets/logo.png')"
           class="my-3"
           contain
-          height="200"
+          height="300"
         ></v-img>
       </v-flex>
 
