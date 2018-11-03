@@ -8,26 +8,14 @@
       app 
       dark
       class="green darken-4"
-    >
-      <v-toolbar 
-      class="green darken-4"      
-      >
-        <v-list>
-          <v-list-tile>
-            <v-list-tile-title class="title green darken-4">
-              
-            </v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-toolbar>
-  
+    > 
       <v-divider></v-divider>
       
       <v-list>
         <v-list-tile
           v-for="item in items"
           :key="item.title"
-          @click=""
+         
         >
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -78,13 +66,26 @@ export default {
   data () {
     return {
       drawer: true,
-      clipped: false,
+      clipped: true,
+      users: [],
       items: [
         { title: 'Dashboard', icon: 'fa-adn' },
         { title: 'Account', icon: 'fa-list' },
         { title: 'Admin', icon: 'fa-edit' }
       ]
     }
-  }
+  },
+  methods: {
+
+  },
+  create: function() {
+    console.log('created ran...');
+    this.$http.get('https://jsonplaceholder.typicode.com/users')
+      .then(function(response){
+        console.log(response.data);
+        this.users=response.data;
+      });
+  }   
+  
 }
 </script>
