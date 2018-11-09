@@ -1,44 +1,46 @@
 <template>
   <v-app>
 
-    <v-navigation-drawer
-      :clipped="clipped" 
+    <router-link :to="{ name: '' }">Home</router-link>
+    <router-link to="/deals">Deals</router-link>
+    <router-link to="/search">Search</router-link>
+
+    <v-navigation-drawer 
       v-model="drawer" 
       enable-resize-watcher 
       app 
       dark
+      width="200"
       class="green darken-4"
     > 
       <v-divider></v-divider>
       
       <v-list>
-        <v-list-tile
+        <v-list-tile 
           v-for="item in items"
           :key="item.title"
-         
+          :to="item.link" className="rlink"
         >
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
   
-          <v-list-tile-content>
+          <v-list-tile-content>           
             <v-list-tile-title>{{ item.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar 
-      fixed
+    <v-toolbar       
       app 
-      :clipped-left="clipped" 
       dark 
       color="red darken-4"
       >
 
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
      
-       <v-flex xs12>
+      <v-flex xs12>
         <v-img
           :src="require('./assets/trademark.png')"
           class="my-3"
@@ -55,7 +57,7 @@
     </v-toolbar>
 
     <v-content>
-      <router-view/>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
@@ -66,12 +68,11 @@ export default {
   data () {
     return {
       drawer: true,
-      clipped: true,
       users: [],
       items: [
-        { title: 'Dashboard', icon: 'fa-adn' },
-        { title: 'Account', icon: 'fa-list' },
-        { title: 'Admin', icon: 'fa-edit' }
+        { title: 'Home', icon: 'fa-home', link: '/' },
+        { title: 'Search', icon: 'fa-search', link: '/search' },
+        { title: 'Deals', icon: 'fa-dollar', link: '/deals' }
       ]
     }
   },
@@ -89,3 +90,10 @@ export default {
   
 }
 </script>
+
+<style lang="scss">
+  .rlink {
+    color: yellow;
+    hover: red;
+  }
+</style>
